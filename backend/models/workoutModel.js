@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const passportLocalmongoose = require("passport-local-mongoose");
 
 const Schema = mongoose.Schema
 
@@ -17,5 +18,8 @@ const workoutSchema = new Schema({
     },
 }, { timestamps: true })
 
-module.exports = mongoose.model('Workout', workoutSchema)
+workoutSchema.plugin(passportLocalmongoose);
+
+const Workout = mongoose.model('Workout', workoutSchema)
+module.exports = Workout
 
