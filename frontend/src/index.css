@@ -109,3 +109,24 @@ input.error {
 .workout-details .title {
   margin-right: 10px;
 }
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}
+
+.login button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}
