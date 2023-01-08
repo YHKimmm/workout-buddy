@@ -1,4 +1,3 @@
-// const passport = require("passport");
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose')
@@ -78,61 +77,5 @@ const getUsers = async (req, res) => {
 }
 
 
-// // sign up a user
-
-// const signupUser = async (req, res) => {
-//     const password = req.body.password;
-//     const passwordConfirm = req.body.passwordConfirm;
-
-//     const newUser = new User({
-//         username: req.body.username,
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         email: req.body.email,
-//         password: req.body.password,
-//         passwordConfirm: req.body.passwordConfirm,
-//     })
-
-//     if (password != passwordConfirm) {
-//         return res.status(404).json({ error: 'Password is not matched' })
-//     }
-
-//     User.register(newUser, password, (error, user) => {
-//         if (error) {
-//             console.log(error);
-//         } else {
-//             passport.authenticate("local")(req, res, () => {
-//                 return res.status(200).json(user)
-//             });
-//         }
-//     })
-
-// }
-
-// // log in user
-
-// const loginUser = async (req, res, next) => {
-//     passport.authenticate('local'),
-//         (req, res) => {
-//             console.log('POST to /login')
-//             const user = JSON.parse(JSON.stringify(req.user)) // hack
-//             const cleanUser = Object.assign({}, user)
-//             if (cleanUser.local) {
-//                 console.log(`Deleting ${cleanUser.local.password}`)
-//                 delete cleanUser.local.password
-//             }
-//             res.json({ user: cleanUser })
-//         }
-// }
-
-// const logoutUser = async (req, res) => {
-//     req.logout((err) => {
-//         if (err) {
-//             return next(err);
-//         } else {
-//             res.redirect("/api/user/login");
-//         }
-//     })
-// }
 
 module.exports = { signupUser, loginUser, getUser, getUsers }

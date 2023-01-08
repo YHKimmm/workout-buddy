@@ -17,7 +17,5 @@ router.post('/login', loginUser)
 // signup route
 router.post('/signup', signupUser)
 
-// logout route
-// router.post('/logout', logoutUser)
 
 module.exports = router

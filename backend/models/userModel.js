@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 const { db } = require("./workoutModel");
-// const passportLocalmongoose = require("passport-local-mongoose");
 
 const Schema = mongoose.Schema
 
@@ -80,7 +79,6 @@ userSchema.statics.login = async function (email, password, firstName, lastName)
 
 }
 
-// userSchema.plugin(passportLocalmongoose)
 
 const User = mongoose.model('User', userSchema);
 module.exports = User

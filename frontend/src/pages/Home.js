@@ -13,8 +13,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchWorkouts = async () => {
-            // not fetch if there is no user first place
-            const response = await fetch('/api/workouts', {
+            const response = await fetch('/api/workouts/', {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -25,15 +24,15 @@ const Home = () => {
                 dispatch({ type: 'SET_WORKOUTS', payload: json })
             }
         }
-
+        // not fetch if there is no user first place
         if (user) {
             fetchWorkouts();
         }
 
     }, [dispatch, user])
 
-    console.log(user);
-    console.log(workouts);
+    console.log('user: ', user);
+    console.log('workouts: ', workouts);
 
     return (
         <div className="home">

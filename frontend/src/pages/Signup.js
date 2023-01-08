@@ -21,7 +21,7 @@ const Signup = () => {
 
 
     return (
-        <div>
+        <div className="signup-wrapper">
             <form onSubmit={handleSubmit} className="signup">
                 <section>
                     <label>First Name: </label>
@@ -63,13 +63,12 @@ const Signup = () => {
                         value={passwordConfirm}
                     />
                 </section>
-                <button disabled={isLoading}>Sign up</button>
+                {password !== passwordConfirm ? <button disabled='true' style={{ 'backgroundColor': '#e7195a' }}>Sign up</button> : <button disabled={isLoading}>Sign up</button>}
                 {error && <div className="error">{error}</div>}
             </form>
-            {/* <section>
-                Don't have an account? <Link to='/register'>Register</Link> your account!
-            </section> */}
-            {password !== passwordConfirm ? 'password is not matched' : null}
+            <div className="error-area">
+                {password !== passwordConfirm ? 'password is not matched' : null}
+            </div>
         </div>
     )
 }
