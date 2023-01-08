@@ -1,44 +1,28 @@
 import { useState } from "react";
-import { useUserContext } from "../hooks/useUserContext";
-import { Link } from "react-router-dom";
-const Register = () => {
+import { useSignup } from "../hooks/useSignup";
 
-    const { dispatch } = useUserContext();
+const Signup = () => {
 
-    const [registerUser, setRegisterUser] = useState([]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    const [isRegister, setIsRegister] = useState(false);
-
+    const { signup, error, isLoading } = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const user = { firstName, lastName, email, password, passwordConfirm };
+        await signup(email, password, firstName, lastName);
 
-        const response = await fetch('/api/user/signup', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
-        const json = await response.json();
-        setRegisterUser(json);
-        console.log(json);
-        console.log(user);
-        dispatch({ type: 'SIGNUP', payload: json })
-        console.log('dispatch', dispatch);
+        console.log(email, password, firstName, lastName);
     }
 
 
     return (
-        <div className="register">
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div>
+            <form onSubmit={handleSubmit} className="signup">
                 <section>
                     <label>First Name: </label>
                     <input
@@ -66,7 +50,7 @@ const Register = () => {
                 <section>
                     <label>Password: </label>
                     <input
-                        type="text"
+                        type="password"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
@@ -74,12 +58,13 @@ const Register = () => {
                 <section>
                     <label>Confirm Password: </label>
                     <input
-                        type="text"
+                        type="password"
                         onChange={(e) => setPasswordConfirm(e.target.value)}
                         value={passwordConfirm}
                     />
                 </section>
-                <button>Register</button>
+                <button disabled={isLoading}>Sign up</button>
+                {error && <div className="error">{error}</div>}
             </form>
             {/* <section>
                 Don't have an account? <Link to='/register'>Register</Link> your account!
@@ -89,4 +74,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default Signup;

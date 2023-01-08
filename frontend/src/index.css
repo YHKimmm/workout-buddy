@@ -110,23 +110,39 @@ input.error {
   margin-right: 10px;
 }
 
-.login {
+.login-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 3em;
 }
 
-.login button a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.register {
+/* navbar */
+nav {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 3em;
+}
+nav a {
+  margin-left: 10px;
+}
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+}
+
+/* auth forms */
+form.signup,
+form.login {
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
 }

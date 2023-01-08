@@ -1,41 +1,24 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useUserContext } from "../hooks/useUserContext";
+import { useLogin } from "../hooks/useLogin";
 
 const LogIn = () => {
-    const navigate = useNavigate();
-
-    const { dispatch } = useUserContext();
-
-
-    const [loginUser, setLoginUser] = useState([]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const { login, error, isLoading } = useLogin()
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(email, password);
 
-        const user = { email, password }
-
-        const response = await fetch('/api/user/login', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
-        const json = await response.json();
-        setLoginUser(json);
-        dispatch({ type: 'LOGIN', payload: json })
-        console.log('login user', loginUser);
-
+        await login(email, password)
     }
 
 
     return (
-        <div className="login">
-            <form className="logIn" onSubmit={handleSubmit} encType="multipart/form-data">
+        <div className="login-wrapper">
+            <form className="login" onSubmit={handleSubmit} >
                 <section className="email">
                     <label>Email: </label>
                     <input
@@ -47,17 +30,16 @@ const LogIn = () => {
                 <section className="password">
                     <label>Password: </label>
                     <input
-                        type="text"
+                        type="password"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
                 </section>
-                <button>
-                    Log In
-                </button>
+                <button disabled={isLoading}>Log In</button>
+                {error && <div className="error">{error}</div>}
             </form>
             <section>
-                Don't have an account? <Link to='/register'>Register</Link> your account!
+                Don't have an account? <Link to='/signup'>Register</Link> your account!
             </section>
         </div>
     );
