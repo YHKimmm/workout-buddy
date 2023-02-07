@@ -53,6 +53,7 @@ const Signup = () => {
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
+                        autoComplete="true"
                     />
                 </section>
                 <section>
@@ -61,9 +62,10 @@ const Signup = () => {
                         type="password"
                         onChange={(e) => setPasswordConfirm(e.target.value)}
                         value={passwordConfirm}
+                        autoComplete="true"
                     />
                 </section>
-                {password !== passwordConfirm ? <button disabled='true' style={{ 'backgroundColor': '#e7195a' }}>Sign up</button> : <button disabled={isLoading}>Sign up</button>}
+                {password !== passwordConfirm ? <button disabled={true} style={{ 'backgroundColor': '#e7195a' }}>Sign up</button> : <button disabled={isLoading}>Sign up</button>}
                 {error && <div className="error">{error}</div>}
             </form>
             <div className="error-area">

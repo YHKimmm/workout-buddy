@@ -14,7 +14,7 @@ const WorkoutDetails = ({ workout }) => {
     const [reps, setReps] = useState(workout.reps);
     const [isEdit, setIsEdit] = useState(false);
 
-    // each elements came from line 11 - 13
+    // each elements came from line 12 - 14
     const workoutEdit = { title, load, reps }
 
     const handleClick = async () => {
