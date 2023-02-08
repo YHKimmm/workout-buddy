@@ -152,3 +152,32 @@ form.login {
   flex-direction: column;
   align-items: center;
 }
+
+/* media queries */
+@media (max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  span {
+    font-size: 1em;
+  }
+
+  header .container {
+    flex-direction: column;
+  }
+
+  nav button {
+    font-size: 0.8em;
+  }
+
+  form.signup,
+  form.login {
+    margin: 0;
+  }
+}
