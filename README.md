@@ -42,4 +42,4 @@ https://workout-buddy.up.railway.app/
 
 ## Preview
 
-![chrome_E5OofbRm30](https://im4.ezgif.com/tmp/ezgif-4-6575d0b429.jpg)
+![workout-buddy-app](https://user-images.githubusercontent.com/102700164/227445077-ca9cf7fa-4943-4825-a486-0815a1b1ec12.jpg)
